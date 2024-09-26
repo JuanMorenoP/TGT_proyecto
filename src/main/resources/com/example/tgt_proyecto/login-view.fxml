@@ -65,7 +65,8 @@
                     <Image url="@Images/logo.jpg" />
                 </ImageView>
                 <Label text="Somos una empresa dedicada a la fabricación y comercialización de equipos para el gremio estético/médico.&#10;Manejamos referencias portátiles, profesionales e importados"
-                       style="-fx-font-size: 22px;-text-fill: white;-fx-wrap-text: true;-fx-alignment: center;-fx-padding: 30;" />
+                       style="-fx-font-size: 22px; -fx-text-fill: white;-fx-font-weight: bold ;-fx-wrap-text: true; -fx-alignment: center; -fx-padding: 30;" />
+
             </VBox>
         </StackPane>
     </right>

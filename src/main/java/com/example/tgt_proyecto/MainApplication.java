@@ -19,7 +19,6 @@ public class MainApplication extends Application {
                 System.out.println("No se pudo encontrar el archivo login-view.fxml");
                 return;
             }
-//HOLAAAAAAAAAAAAA ACTU
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
             Scene scene = new Scene(fxmlLoader.load(), 1007, 641);
 
