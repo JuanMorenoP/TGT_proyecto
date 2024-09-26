@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.DashboardController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #333;">
+            <Label text="Mi Dashboard" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+        </HBox>
+    </top>
+    <left>
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #444;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Inicio" onAction="#handleInicio"/>
+            <Button text="Inventario" onAction="#handleInventario"/>
+            <Button text="Ventas" onAction="#handleVentas"/>
+            <Button text="Usuarios" onAction="#handleUsuarios"/>
+            <Button text="Mantenimientos" onAction="#handleMantenimientos"/>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentArea">
+            <!-- Aquí se cargarán las diferentes vistas de contenido -->
+        </StackPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.ttf');
+}
+
+.root {
+    -fx-font-family: 'Montserrat';
+}
+
+/* Ajustes para los títulos y textos */
+.title {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.subtitle {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+/* Fondo blanco para eliminar el gris */
+.header {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
+.label-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #286465;
+}
+/* Fondo transparente con color E4EFF0 para los campos de texto */
+.text-field {
+    -fx-background-color: #E4EFF0;
+    -fx-border-color: #0ACBBC;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Estilo para el botón */
+.button {
+    -fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+}
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+.check-box {
+    -fx-text-fill: #286465;
+}
+
+/* Descripción en el cuadro verde con texto blanco */
+.description-text {
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.LoginController">
+    <!-- Encabezado con el logo y el título (sin cuadro gris) -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: white;"> <!-- Fondo blanco -->
+            <ImageView fx:id="logo" fitWidth="200" fitHeight="200" pickOnBounds="true" preserveRatio="true">
+                <Image url="@Images/logo.jpg" />
+            </ImageView>
+            <Label text="TGT | EQUIPMENTS" style="-fx-font-size: 20px;-fx-font-weight: bold;-fx-text-fill: #0ACBBC;" />
+        </HBox>
+    </top>
+
+    <!-- Cuerpo principal -->
+    <center>
+        <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS" style="-fx-background-color: white;">
+            <Label text="Bienvenido a" style="-fx-font-size: 35px;-fx-font-weight: bold; -fx-text-fill: #000000;" />
+            <Label text="TGT | EQUIPMENTS" style="-fx-font-size: 40px;-fx-font-weight: bold;-fx-text-fill: #000000;" />
+
+            <!-- Caja de texto para el usuario -->
+            <TextField fx:id="usernameField" promptText="Usuario" style="-fx-pref-width: 350px; -fx-max-width: 350px; -fx-min-width: 350px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;" />
+
+            <!-- Caja de texto para la contraseña con ícono de visibilidad -->
+            <StackPane alignment="CENTER_LEFT" style="-fx-pref-width: 350px; -fx-max-width: 350px;">
+                <PasswordField fx:id="passwordField" promptText="Contraseña" style="-fx-pref-width: 350px; -fx-max-width: 350px; -fx-min-width: 350px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;" />
+                <TextField fx:id="showPasswordField" promptText="Contraseña" style="-fx-pref-width: 350px; -fx-max-width: 350px; -fx-min-width: 350px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;" />
+                <!-- Icono del ojo para mostrar/ocultar contraseña -->
+                <ImageView fx:id="togglePasswordVisibility" fitWidth="24" fitHeight="24" style="-fx-cursor: hand; -fx-translate-x: -30;">
+                    <Image url="@icons/eye-closed.png"/>
+                </ImageView>
+            </StackPane>
+
+            <!-- Ajusta el checkbox y el botón para que estén centrados y alineados -->
+            <VBox alignment="CENTER" spacing="10">
+                <Button text="Iniciar Sesión" fx:id="loginButton" style="-fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+" />
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Área verde completa detrás y expandida hacia arriba -->
+    <!-- Área verde completa detrás -->
+    <right>
+        <StackPane>
+            <VBox alignment="CENTER" style="-fx-background-color: white; -fx-pref-width: 800px;">
+            </VBox>
+
+            <!-- Área verde con borde en la curva -->
+            <VBox alignment="CENTER" style="-fx-background-color: #0ACBBC;
+                -fx-background-radius: 200 0 0 200;
+                -fx-border-color: #286465;
+                -fx-border-radius: 200 0 0 200;
+                -fx-border-width: 3;
+                -fx-pref-width: 500px;
+                -fx-pref-height: 500px;">
+                <ImageView fitWidth="200" fitHeight="200" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@Images/logo.jpg" />
+                </ImageView>
+                <Label text="Somos una empresa dedicada a la fabricación y comercialización de equipos para el gremio estético/médico.&#10;Manejamos referencias portátiles, profesionales e importados"
+                       style="-fx-font-size: 22px;-text-fill: white;-fx-wrap-text: true;-fx-alignment: center;-fx-padding: 30;" />
+            </VBox>
+        </StackPane>
+    </right>
+</BorderPane>
