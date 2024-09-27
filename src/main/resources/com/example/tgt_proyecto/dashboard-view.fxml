@@ -1,29 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.DashboardController">
-    <top>
-        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #333;">
-            <Label text="Mi Dashboard" style="-fx-text-fill: white; -fx-font-size: 18px;" />
-        </HBox>
-    </top>
+
+    <!-- Barra lateral de navegación -->
     <left>
-        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #444;">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <Button text="Inicio" onAction="#handleInicio"/>
-            <Button text="Inventario" onAction="#handleInventario"/>
-            <Button text="Ventas" onAction="#handleVentas"/>
-            <Button text="Usuarios" onAction="#handleUsuarios"/>
-            <Button text="Mantenimientos" onAction="#handleMantenimientos"/>
+        <VBox styleClass="sidebar">
+            <!-- Logo y título -->
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="sidebar-logo">
+                <ImageView fx:id="logo" fitWidth="100" fitHeight="100" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@Images/logo.jpg"/>
+                </ImageView>
+                <Label text="TGT | EQUIPMENTS" styleClass="sidebar-title"/>
+            </HBox>
+
+            <!-- Menú de navegación -->
+            <VBox spacing="15" alignment="TOP_LEFT" styleClass="menu">
+                <Button text="Inicio" styleClass="nav-button"/>
+                <Button text="Maquinaria" styleClass="nav-button"/>
+                <Button text="Empleados" styleClass="nav-button"/>
+                <Button text="Clientes" styleClass="nav-button"/>
+                <Button text="Proveedores" styleClass="nav-button"/>
+                <TitledPane text="Servicios" styleClass="nav-button">
+                    <VBox>
+                        <Button text="Preventivos" styleClass="nav-sub-button"/>
+                        <Button text="Correctivos" styleClass="nav-sub-button"/>
+                    </VBox>
+                </TitledPane>
+                <Button text="Configuración" styleClass="nav-button"/>
+            </VBox>
+
+            <!-- Cerrar sesión -->
+            <Button fx:id="cerrarSesionButton" text="Cerrar sesión" styleClass="nav-button"/>
         </VBox>
     </left>
+
+    <!-- Contenido principal -->
     <center>
-        <StackPane fx:id="contentArea">
-            <!-- Aquí se cargarán las diferentes vistas de contenido -->
-        </StackPane>
+        <VBox spacing="20" alignment="TOP_CENTER" styleClass="dashboard-content">
+            <!-- Título y contenedores -->
+            <HBox alignment="CENTER" spacing="30" styleClass="top-cards">
+                <Label text="Dashboard TGT" styleClass="dashboard-title"/>
+                <ImageView fx:id="userIcon" fitWidth="50" fitHeight="50" pickOnBounds="true" preserveRatio="true"/>
+            </HBox>
+
+            <!-- Últimos cambios -->
+            <VBox spacing="15" styleClass="recent-changes">
+                <Label text="Últimos cambios" styleClass="section-title"/>
+                <TableView fx:id="tableView" styleClass="table">
+                    <columns>
+                        <TableColumn text="Nombre del archivo"/>
+                        <TableColumn text="Formato del archivo"/>
+                        <TableColumn text="Fecha"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
     </center>
+
+    <!-- Productos populares -->
+    <right>
+        <VBox alignment="TOP_CENTER" spacing="20" styleClass="right-section">
+            <Label text="Productos populares" styleClass="section-title"/>
+            <VBox alignment="CENTER" spacing="15">
+                <Button text="Producto numero uno" styleClass="product-button"/>
+                <Button text="Producto numero dos" styleClass="product-button"/>
+                <Button text="Producto numero tres" styleClass="product-button"/>
+            </VBox>
+        </VBox>
+    </right>
 </BorderPane>

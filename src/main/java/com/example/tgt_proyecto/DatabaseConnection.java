@@ -13,7 +13,6 @@ public class DatabaseConnection {
     private final String url = "jdbc:sqlserver://DESKTOP-HS7FCSK;databaseName=TGT_inventario;integratedSecurity=true;encrypt=false;";
 
 
-
     public Connection connect() {
         Connection conn = null;
         try {

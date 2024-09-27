@@ -24,7 +24,7 @@ public class MainApplication extends Application {
 
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
             Scene scene = new Scene(fxmlLoader.load());
-
+            scene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
             stage.setTitle("TGT | EQUIPMENTS");
 
             // Obtener la resolución de pantalla actual

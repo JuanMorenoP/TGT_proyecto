@@ -1,18 +1,21 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts/Montserrat-Regular.ttf');
+    src: url('fonts/Montserrat-Bold.ttf');
 }
 
 .root {
     -fx-font-family: 'Montserrat';
 }
 
+
 /* Ajustes para los títulos y textos */
 .title {
+    -fx-font-family: 'Montserrat';
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
 }
+
 
 .subtitle {
     -fx-font-size: 28px;
@@ -25,11 +28,13 @@
     -fx-background-color: white;
     -fx-padding: 20;
 }
+
 .label-title {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: #286465;
 }
+
 /* Fondo transparente con color E4EFF0 para los campos de texto */
 .text-field {
     -fx-background-color: #E4EFF0;
@@ -39,13 +44,23 @@
 }
 
 /* Estilo para el botón */
+/* Estilo normal del botón */
 .button {
     -fx-background-color: #0ACBBC;
     -fx-text-fill: white;
     -fx-background-radius: 10;
     -fx-font-size: 16px;
     -fx-padding: 10;
+    -fx-cursor: hand; /* Para mostrar el puntero de mano sobre el botón */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 1); /* Sombra ligera */
 }
+
+/* Estilo del botón cuando el cursor está sobre él */
+.button:hover {
+    -fx-background-color: #0DA59A; /* Un color más oscuro para indicar que está seleccionado */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 2); /* Aumentar la sombra para el hover */
+}
+
 .icon-button {
     -fx-background-color: transparent;
     -fx-cursor: hand;
@@ -56,10 +71,108 @@
     -fx-text-fill: #286465;
 }
 
+.text-shadow {
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+    -fx-padding: 10 20 10 80;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0, 0, 1);
+}
+
+.background-gradient {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0ACBBC, #286465);
+    -fx-background-radius: 200 0 0 200;
+    -fx-border-color: #286465;
+    -fx-border-radius: 200 0 0 200;
+    -fx-border-width: 3;
+    -fx-pref-width: 500px;
+    -fx-pref-height: 700px;
+    -fx-padding: 30 30 30 30;
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: linear-gradient(#003333, #005555);
+    -fx-padding: 15px;
+}
+
+.sidebar-logo {
+    -fx-padding: 20;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.menu {
+    -fx-padding: 10;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+.nav-sub-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: lightgray;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+.logout-button {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
+
+/* Dashboard content */
+.dashboard-content {
+    -fx-padding: 20;
+}
+
+.dashboard-title {
+    -fx-font-size: 36px;
+    -fx-text-fill: #333333;
+}
+
+.recent-changes {
+    -fx-background-color: white;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.section-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #0ACBBC;
+}
+
+/* Right section */
+.right-section {
+    -fx-background-color: #E4EFF0;
+    -fx-padding: 20;
+    -fx-border-radius: 15;
+}
+
+.product-button {
+    -fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
 /* Descripción en el cuadro verde con texto blanco */
 .description-text {
     -fx-font-size: 22px;
     -fx-text-fill: white;
     -fx-wrap-text: true;
     -fx-alignment: center;
+
+
 }
