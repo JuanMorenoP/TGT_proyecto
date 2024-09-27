@@ -24,7 +24,14 @@
                 <version>20.0.1</version> <!-- Ajusta la versión según la que estés usando -->
             </dependency>
 
-            <!-- Dependencia para JavaFX Base (requerido para otras partes de JavaFX) -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.8.1.jre11</version> <!-- Asegúrate de usar la versión compatible -->
+        </dependency>
+
+
+        <!-- Dependencia para JavaFX Base (requerido para otras partes de JavaFX) -->
             <dependency>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-base</artifactId>

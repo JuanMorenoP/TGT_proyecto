@@ -11,10 +11,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginController {
+
+    @FXML
+    private TextField usernameField;
 
     @FXML
     private PasswordField passwordField;
@@ -26,7 +34,10 @@ public class LoginController {
     private ImageView togglePasswordVisibility;
 
     @FXML
-    private Button loginButton; // Vinculación correcta del botón
+    private Button loginButton;
+
+    @FXML
+    private Label errorLabel; // Para mostrar el mensaje de error
 
     private boolean isPasswordVisible = false;
 
@@ -58,31 +69,59 @@ public class LoginController {
             }
         });
 
-        // Configurar el botón de inicio de sesión para abrir el dashboard
+        // Configurar el botón de inicio de sesión para verificar credenciales
         loginButton.setOnAction(event -> {
             try {
-                loginAction(event);  // Acción para abrir el dashboard
+                verificarCredenciales(event);  // Acción para abrir el dashboard o mostrar el error
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
     }
 
-    // Método para abrir el dashboard
-    private void loginAction(ActionEvent event) throws IOException {
-        // Cargar el archivo FXML del dashboard
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tgt_proyecto/dashboard-view.fxml"));
-        Scene dashboardScene = new Scene(fxmlLoader.load());
+    // Método para verificar las credenciales
+    private void verificarCredenciales(ActionEvent event) throws IOException {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
 
-        // Añadir la hoja de estilos al dashboard
-        dashboardScene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
+        // Verificar si los campos están vacíos
+        if (username.isEmpty() || password.isEmpty()) {
+            errorLabel.setText("Los campos no pueden estar vacíos.");
+            return;
+        }
 
-        // Obtener la ventana actual
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        DatabaseConnection dbConnection = new DatabaseConnection();
+        Connection connection = dbConnection.connect();
 
-        // Cambiar la escena a la del dashboard
-        stage.setScene(dashboardScene);
-        stage.setTitle("Dashboard TGT | EQUIPMENTS");
-        stage.show();
+        if (connection != null) {
+            String query = "SELECT * FROM Usuarios WHERE us_usuario = ? AND us_contraseña = ?";
+
+            try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                stmt.setString(1, username);
+                stmt.setString(2, password);
+
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    // Usuario encontrado, cambiar a la escena del dashboard
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tgt_proyecto/dashboard-view.fxml"));
+                    Scene dashboardScene = new Scene(fxmlLoader.load());
+                    dashboardScene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
+                    // Cambiar la escena actual al dashboard
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(dashboardScene);
+                    stage.setTitle("Dashboard TGT | EQUIPMENTS");
+                    stage.show();
+                } else {
+                    // Usuario no encontrado
+                    errorLabel.setText("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                errorLabel.setText("Error al verificar credenciales.");
+            }
+        } else {
+            errorLabel.setText("Error en la conexión a la base de datos.");
+        }
     }
 }
