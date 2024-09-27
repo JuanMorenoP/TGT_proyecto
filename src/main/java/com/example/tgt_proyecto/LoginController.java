@@ -124,4 +124,12 @@ public class LoginController {
             errorLabel.setText("Error en la conexión a la base de datos.");
         }
     }
+
+    // Método para limpiar los campos de texto
+    public void limpiarCampos() {
+        usernameField.clear();
+        passwordField.clear();
+        showPasswordField.clear();
+        errorLabel.setText(""); // Limpiar cualquier mensaje de error
+    }
 }

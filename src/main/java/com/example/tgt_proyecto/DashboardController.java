@@ -48,6 +48,10 @@ public class DashboardController {
         // Añadir la hoja de estilos al login
         loginScene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
 
+        // Obtener el controlador del login y limpiar los campos
+        LoginController loginController = fxmlLoader.getController();
+        loginController.limpiarCampos();  // Limpia los campos del login
+
         // Obtener la ventana actual
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
