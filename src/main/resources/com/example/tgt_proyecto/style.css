@@ -176,3 +176,242 @@
 
 
 }
+
+/* Barra lateral de navegación con degradado */
+.sidebar {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #003333, #005555);
+    -fx-padding: 15px;
+}
+
+.sidebar-logo {
+    -fx-padding: 20;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.menu {
+    -fx-padding: 10;
+}
+
+/* Botones de la navegación */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10;
+}
+
+.nav-sub-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: lightgray;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+/* Estilo de la sección principal */
+.dashboard-content {
+    -fx-padding: 20;
+}
+
+.dashboard-title {
+    -fx-font-size: 36px;
+    -fx-text-fill: #333333;
+}
+
+.recent-changes {
+    -fx-background-color: white;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.section-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #0ACBBC;
+}
+
+/* Sección derecha de productos populares */
+.right-section {
+    -fx-background-color: #E4EFF0;
+    -fx-padding: 20;
+    -fx-border-radius: 15;
+
+}
+
+.product-button {
+    -fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Color de fondo de los cuadros */
+.recent-changes, .right-section {
+    -fx-background-color: #E4EFF0;
+    -fx-border-color: #286465;
+    -fx-border-radius: 15;
+    -fx-padding: 20;
+}
+
+/* Ajustes para los botones en los cuadros */
+.product-button {
+    -fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Estilo de los títulos dentro de los cuadros */
+.section-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #286465;
+}
+
+/* Fondo de la barra de navegación con degradado */
+.sidebar {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #003333, #005555);
+    -fx-padding: 15px;
+}
+
+/* Estilo para los botones de navegación */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10;
+}
+
+/* Estilo para los sub-botones (dentro de Servicios) */
+.nav-sub-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: lightgray;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+/* Título del dashboard */
+.dashboard-title {
+    -fx-font-size: 36px;
+    -fx-text-fill: #333333;
+}
+
+/* Estilo para los cuadros de la parte superior */
+.info-box {
+    -fx-background-color: #E4EFF0;
+    -fx-border-color: #286465;
+    -fx-border-radius: 15;
+    -fx-padding: 20;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 300px;
+    -fx-alignment: CENTER;
+}
+
+.info-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: #286465;
+    -fx-font-weight: bold;
+}
+
+.info-button {
+    -fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Fondo de la barra de navegación con degradado */
+.sidebar {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #003333, #005555);
+    -fx-padding: 15px;
+}
+
+.sidebar-logo {
+    -fx-padding: 20;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.menu {
+    -fx-padding: 10;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10;
+}
+
+.recent-changes {
+    -fx-background-color: #E4EFF0;
+    -fx-border-color: #286465;
+    -fx-border-radius: 15;
+    -fx-padding: 20;
+}
+
+.section-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #286465;
+}
+
+.product-button {
+    -fx-background-color: #0ACBBC;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Tabla */
+.table {
+    -fx-background-color: white;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 10;
+}
+.sidebar {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #003333, #005555);
+    -fx-padding: 15px;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-alignment: center-left;
+    -fx-padding: 10 20;
+}
+
+.nav-sub-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: lightgray;
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+    -fx-padding: 10 20;
+}
+
+.dashboard-header {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
