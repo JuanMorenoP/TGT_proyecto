@@ -2,73 +2,18 @@ package com.example.tgt_proyecto;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class DashboardController {
-
-    @FXML
-    private TableView<?> tableView;
-
-    @FXML
-    private ImageView userIcon;
-
-    @FXML
-    private Button cerrarSesionButton;  // Enlaza el botón de "Cerrar Sesión"
-
-    @FXML
-    private Button inicioButton; // Botón de Inicio para aplicar el estilo activo
-
-    @FXML
-    public void initialize() {
-        // Inicialización de los elementos del dashboard, como cargar íconos
-        userIcon.setImage(new Image(getClass().getResourceAsStream("/com/example/tgt_proyecto/icons/user.png")));
-
-        // Configurar el botón de cerrar sesión para volver al login
-        cerrarSesionButton.setOnAction(event -> {
-            try {
-                cerrarSesionAction(event);  // Acción para volver al login
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        // Aplicar el estilo de la clase "nav-button-active" al botón de Inicio
-        inicioButton.getStyleClass().add("nav-button-active");
-    }
-
-    // Método para cerrar sesión y regresar a la ventana de login
-    private void cerrarSesionAction(ActionEvent event) throws IOException {
-        // Cargar el archivo FXML del login
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tgt_proyecto/login-view.fxml"));
-        Scene loginScene = new Scene(fxmlLoader.load());
-
-        // Añadir la hoja de estilos al login
-        loginScene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
-
-        // Obtener el controlador del login y limpiar los campos
-        LoginController loginController = fxmlLoader.getController();
-        loginController.limpiarCampos();  // Limpiar los campos del login
-
-        // Obtener la ventana actual
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        // Cambiar la escena a la del login
-        stage.setScene(loginScene);
-        stage.setTitle("TGT | EQUIPMENTS - Login");
-        stage.show();
-    }
-
-    // Métodos de navegación a las diferentes secciones
-
+public class NuevoClienteController {
     @FXML
     private void handleInicio(ActionEvent event) throws IOException {
         cambiarEscena(event, "/com/example/tgt_proyecto/dashboard-view.fxml", "Dashboard TGT | EQUIPMENTS");
@@ -118,6 +63,75 @@ public class DashboardController {
     private void handleConfiguracion(ActionEvent event) throws IOException {
         cambiarEscena(event, "/com/example/tgt_proyecto/configuracion.fxml", "Configuración TGT | EQUIPMENTS");
     }
+    @FXML
+    private TextField nombreField;
+
+    @FXML
+    private TextField direccionField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField telefonoField;
+
+    @FXML
+    private TextField documentoField;
+
+    @FXML
+    private Button cancelarButton;
+
+    @FXML
+    private Button agregarClienteButton;
+
+    // Método para manejar la acción del botón "Cancelar"
+    @FXML
+    private void handleCancelar(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/com/example/tgt_proyecto/clientes.fxml", "Clientes TGT | EQUIPMENTS");
+    }
+
+    // Método para manejar la acción del botón "Agregar cliente"
+    @FXML
+    private void handleAgregarCliente(ActionEvent event) throws IOException, SQLException {
+        // Obtener los valores de los campos
+        String nombre = nombreField.getText();
+        String direccion = direccionField.getText();
+        String email = emailField.getText();
+        String telefono = telefonoField.getText();
+        String documento = documentoField.getText();
+
+        // Validar que los campos no estén vacíos
+        if (nombre.isEmpty() || direccion.isEmpty() || email.isEmpty() || telefono.isEmpty() || documento.isEmpty()) {
+            // Mostrar mensaje de error o retornar
+            return;
+        }
+
+        // Conectar a la base de datos y agregar el cliente
+        DatabaseConnection dbConnection = new DatabaseConnection();
+        Connection connection = dbConnection.connect();
+
+        if (connection != null) {
+            String insertQuery = "INSERT INTO Clientes (cli_nombre, cli_telefono, cli_email, cli_direccion, cli_documento) VALUES (?, ?, ?, ?, ?)";
+            try (PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
+                stmt.setString(1, nombre);
+                stmt.setString(2, telefono);
+                stmt.setString(3, email);
+                stmt.setString(4, direccion);
+                stmt.setString(5, documento);
+
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return;  // Mostrar mensaje de error
+            } finally {
+                connection.close();
+            }
+        }
+
+        // Regresar al apartado de clientes después de agregar el cliente
+        cambiarEscena(event, "/com/example/tgt_proyecto/clientes.fxml", "Clientes TGT | EQUIPMENTS");
+    }
+
 
     // Método auxiliar para cambiar escenas
     private void cambiarEscena(ActionEvent event, String fxmlPath, String titulo) throws IOException {

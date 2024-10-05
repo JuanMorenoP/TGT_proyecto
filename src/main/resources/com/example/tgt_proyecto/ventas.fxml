@@ -30,61 +30,61 @@
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/inicio.png"/> <!-- Icono para Inicio -->
                     </ImageView>
-                    <Button text="Inicio" styleClass="nav-button nav-button-active" fx:id="inicioButton" onAction="#handleInicio"/>
+                    <Button text="Inicio" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/maquinaria.png"/> <!-- Icono para Maquinaria -->
                     </ImageView>
-                    <Button text="Maquinaria" styleClass="nav-button" onAction="#handleMaquinaria"/>
+                    <Button text="Maquinaria" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/empleados.png"/> <!-- Icono para Empleados -->
                     </ImageView>
-                    <Button text="Empleados" styleClass="nav-button" onAction="#handleEmpleados"/>
+                    <Button text="Empleados" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/clientes.png"/> <!-- Icono para Clientes -->
                     </ImageView>
-                    <Button text="Clientes" styleClass="nav-button" onAction="#handleClientes"/>
+                    <Button text="Clientes" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/proveedores.png"/> <!-- Icono para Proveedores -->
                     </ImageView>
-                    <Button text="Proveedores" styleClass="nav-button" onAction="#handleProveedores"/>
+                    <Button text="Proveedores" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/mantenimiento.png"/> <!-- Icono para Mantenimiento -->
                     </ImageView>
-                    <Button text="Mantenimiento" styleClass="nav-button" onAction="#handleMantenimiento"/>
+                    <Button text="Mantenimiento" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/inventario.png"/> <!-- Icono para Inventario -->
                     </ImageView>
-                    <Button text="Inventario" styleClass="nav-button" onAction="#handleInventario"/>
+                    <Button text="Inventario" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/compras.png"/> <!-- Icono para Compras -->
                     </ImageView>
-                    <Button text="Compras" styleClass="nav-button" onAction="#handleCompras"/>
+                    <Button text="Compras" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/ventas.png"/> <!-- Icono para Ventas -->
                     </ImageView>
-                    <Button text="Ventas" styleClass="nav-button" onAction="#handleVentas"/>
+                    <Button text="Ventas" styleClass="nav-button"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@icons/configuracion.png"/> <!-- Icono para Configuración -->
                     </ImageView>
-                    <Button text="Configuración" styleClass="nav-button" onAction="#handleConfiguracion"/>
+                    <Button text="Configuración" styleClass="nav-button"/>
                 </HBox>
             </VBox>
 
@@ -154,6 +154,7 @@
                     <Button text="Programar cita" styleClass="info-button"/>
                 </VBox>
             </HBox>
+
 
             <!-- Últimos cambios -->
 

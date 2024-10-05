@@ -358,6 +358,13 @@
     -fx-padding: 10;
 }
 
+.recent-changes1 {
+    -fx-background-color: transparent;
+    -fx-border-color: #286465;
+    -fx-border-radius: 15;
+    -fx-padding: 20;
+}
+
 .recent-changes {
     -fx-background-color: #E4EFF0;
     -fx-border-color: #286465;
@@ -382,8 +389,9 @@
 .table {
     -fx-background-color: white;
     -fx-border-color: #B0B0B0;
-    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
+
 .sidebar {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #003333, #005555);
     -fx-padding: 15px;
@@ -414,4 +422,13 @@
 .dashboard-header {
     -fx-background-color: white;
     -fx-padding: 20;
+}
+
+.main-background {
+    -fx-background-color: #E4EFF0; /* Color de fondo que desees */
+}
+.nav-button-active {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 1);
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
