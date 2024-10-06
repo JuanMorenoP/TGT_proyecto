@@ -8,12 +8,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javafx.scene.control.Alert;
+
+import javafx.scene.control.*;
+
 public class NuevoClienteController {
+
     @FXML
     private void handleInicio(ActionEvent event) throws IOException {
         cambiarEscena(event, "/com/example/tgt_proyecto/dashboard-view.fxml", "Dashboard TGT | EQUIPMENTS");
@@ -63,6 +69,7 @@ public class NuevoClienteController {
     private void handleConfiguracion(ActionEvent event) throws IOException {
         cambiarEscena(event, "/com/example/tgt_proyecto/configuracion.fxml", "Configuración TGT | EQUIPMENTS");
     }
+
     @FXML
     private TextField nombreField;
 
@@ -77,12 +84,27 @@ public class NuevoClienteController {
 
     @FXML
     private TextField documentoField;
-
+    @FXML
+    private Button cerrarSesionButton;
     @FXML
     private Button cancelarButton;
 
     @FXML
     private Button agregarClienteButton;
+
+    @FXML
+    public void initialize() {
+        // Configurar el botón de cerrar sesión para volver al login
+        cerrarSesionButton.setOnAction(event -> {
+            try {
+                cerrarSesionAction(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+    @FXML
+    private TableView<Cliente> tableView;
 
     // Método para manejar la acción del botón "Cancelar"
     @FXML
@@ -102,7 +124,7 @@ public class NuevoClienteController {
 
         // Validar que los campos no estén vacíos
         if (nombre.isEmpty() || direccion.isEmpty() || email.isEmpty() || telefono.isEmpty() || documento.isEmpty()) {
-            // Mostrar mensaje de error o retornar
+            mostrarAlerta("Error", "Campos Vacíos", "Todos los campos deben estar llenos.");
             return;
         }
 
@@ -120,9 +142,11 @@ public class NuevoClienteController {
                 stmt.setString(5, documento);
 
                 stmt.executeUpdate();
+                mostrarAlerta("Éxito", "Cliente Agregado", "El cliente ha sido agregado exitosamente.");
             } catch (SQLException e) {
                 e.printStackTrace();
-                return;  // Mostrar mensaje de error
+                mostrarAlerta("Error", "Error al agregar cliente", "Hubo un error al agregar el cliente.");
+                return;
             } finally {
                 connection.close();
             }
@@ -131,7 +155,29 @@ public class NuevoClienteController {
         // Regresar al apartado de clientes después de agregar el cliente
         cambiarEscena(event, "/com/example/tgt_proyecto/clientes.fxml", "Clientes TGT | EQUIPMENTS");
     }
+    // Método para cerrar sesión y regresar a la ventana de login, limpiando los campos
+    private void cerrarSesionAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tgt_proyecto/login-view.fxml"));
+        Scene loginScene = new Scene(fxmlLoader.load());
+        loginScene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm()); // Asegurando que los estilos se carguen
 
+        LoginController loginController = fxmlLoader.getController();
+        loginController.limpiarCampos();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(loginScene);
+        stage.setTitle("TGT | EQUIPMENTS - Login");
+        stage.show();
+    }
+
+    // Método auxiliar para mostrar una alerta
+    private void mostrarAlerta(String titulo, String encabezado, String contenido) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(encabezado);
+        alerta.setContentText(contenido);
+        alerta.showAndWait();
+    }
 
     // Método auxiliar para cambiar escenas
     private void cambiarEscena(ActionEvent event, String fxmlPath, String titulo) throws IOException {

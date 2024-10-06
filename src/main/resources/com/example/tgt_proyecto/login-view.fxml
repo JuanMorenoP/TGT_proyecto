@@ -9,9 +9,9 @@
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: white;"> <!-- Fondo blanco -->
             <ImageView fx:id="logo" fitWidth="200" fitHeight="200" pickOnBounds="true" preserveRatio="true">
-                <Image url="@Images/logo.jpg" />
+                <Image url="@Images/logo.jpg"/>
             </ImageView>
-            <Label text="TGT | EQUIPMENTS" style="-fx-font-size: 20px;-fx-font-weight: bold;-fx-text-fill: #0ACBBC;" />
+            <Label text="TGT | EQUIPMENTS" style="-fx-font-size: 20px;-fx-font-weight: bold;-fx-text-fill: #0ACBBC;"/>
         </HBox>
     </top>
 
@@ -20,17 +20,22 @@
         <!-- Ajuste de espaciado entre los elementos -->
         <VBox alignment="CENTER" spacing="15" VBox.vgrow="ALWAYS" style="-fx-background-color: white;">
             <Label text="Bienvenido a" styleClass="subtitle" alignment="CENTER_LEFT"/>
-            <Label text="TGT | EQUIPMENTS" styleClass="title" />
+            <Label text="TGT | EQUIPMENTS" styleClass="title"/>
 
             <!-- Caja de texto para el usuario -->
-            <TextField fx:id="usernameField" promptText="Usuario" style="-fx-pref-width: 400px; -fx-max-width: 400px; -fx-min-width: 400px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;" />
+            <TextField fx:id="usernameField" promptText="Usuario"
+                       style="-fx-pref-width: 400px; -fx-max-width: 400px; -fx-min-width: 400px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;-fx-background-radius: 10;"/>
 
             <!-- Caja de texto para la contraseña con ícono de visibilidad -->
-            <StackPane alignment="CENTER_RIGHT" style="-fx-pref-width: 400px; -fx-max-width: 400px;">
-                <PasswordField fx:id="passwordField" promptText="Contraseña" style="-fx-pref-width: 400px; -fx-max-width: 400px; -fx-min-width: 400px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;" />
-                <TextField fx:id="showPasswordField" promptText="Contraseña" style="-fx-pref-width: 400px; -fx-max-width: 400px; -fx-min-width: 400px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;" />
+            <StackPane alignment="CENTER_RIGHT"
+                       style="-fx-pref-width: 400px; -fx-max-width: 400px;-fx-padding:10;-fx-cursor: hand;">
+                <PasswordField fx:id="passwordField" promptText="Contraseña"
+                               style="-fx-pref-width: 400px; -fx-max-width: 400px; -fx-min-width: 400px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;-fx-background-radius: 10;"/>
+                <TextField fx:id="showPasswordField" promptText="Contraseña"
+                           style="-fx-pref-width: 400px; -fx-max-width: 400px; -fx-min-width: 400px; -fx-border-color: #0ACBBC; -fx-border-radius: 10;;-fx-background-color: #E4EFF0;-fx-padding: 10;-fx-background-radius: 10;"/>
                 <!-- Icono del ojo para mostrar/ocultar contraseña -->
-                <ImageView fx:id="togglePasswordVisibility" fitWidth="30" fitHeight="30" style="-fx-cursor: hand; -fx-translate-x: -10;">
+                <ImageView fx:id="togglePasswordVisibility" fitWidth="30" fitHeight="30"
+                           style="-fx-cursor: hand; -fx-translate-x: -10;-fx-padding: 20;">
                     <Image url="@icons/eye-closed.png"/>
                 </ImageView>
             </StackPane>
@@ -41,7 +46,7 @@
     -fx-text-fill: white;
     -fx-background-radius: 10;
     -fx-font-size: 16px;
-    -fx-padding: 10;" />
+    -fx-padding: 10;"/>
 
                 <!-- Etiqueta para mostrar errores -->
                 <Label fx:id="errorLabel" text="" style="-fx-text-fill: red;" alignment="CENTER"/>
@@ -60,16 +65,16 @@
             <VBox alignment="CENTER" styleClass="background-gradient">
                 <StackPane alignment="CENTER" style="-fx-padding: 0 50 0 50;">
                     <ImageView fitWidth="250" fitHeight="250" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@Images/logo.jpg" />
+                        <Image url="@Images/logo.jpg"/>
                     </ImageView>
                 </StackPane>
 
                 <!-- Espacio entre el logo y el texto -->
-                <Region fx:id="logoTextSpacer" style="-fx-pref-height: 50px;" />
+                <Region fx:id="logoTextSpacer" style="-fx-pref-height: 50px;"/>
 
                 <!-- Texto de descripción centrado y con márgenes -->
                 <Label text="Somos una empresa dedicada a la fabricación y comercialización de equipos para el gremio estético/médico.&#10;Manejamos referencias portátiles, profesionales e importados"
-                       styleClass="text-shadow" />
+                       styleClass="text-shadow"/>
             </VBox>
         </StackPane>
     </right>

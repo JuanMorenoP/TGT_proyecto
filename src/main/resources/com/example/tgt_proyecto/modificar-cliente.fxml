@@ -3,7 +3,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.ClientesController"
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.ModificarClienteController"
             styleClass="main-background">
 
     <!-- Barra lateral de navegación -->
@@ -105,28 +105,43 @@
                 </ImageView>
             </HBox>
 
-            <!-- Listado de clientes -->
-            <VBox spacing="10" alignment="TOP_CENTER" styleClass="clients-list">
-                <HBox spacing="10" alignment="CENTER_LEFT">
-                    <Label text="Listado de clientes" styleClass="section-title"/>
-                    <ImageView fx:id="iconClient" fitWidth="45" fitHeight="45">
-                        <Image url="@icons/users2.png"/>
-                    </ImageView>
-                </HBox>
-                <TableView fx:id="tableView" styleClass="table">
-                    <columns>
-                        <TableColumn text="Número" fx:id="numeroColumn" prefWidth="150"/>
-                        <TableColumn text="Nombre del Cliente" fx:id="nombreColumn" prefWidth="500"/>
-                    </columns>
-                </TableView>
-                <Region fx:id="Espacio_botones" VBox.vgrow="NEVER" style="-fx-pref-height: 30;"/>
-                <HBox alignment="CENTER" spacing="15">
-                    <Button text="Eliminar" styleClass="action-button" onAction="#handleEliminar"/>
-                    <Button text="Agregar" styleClass="action-button" onAction="#handleAgregar"/>
-                    <Button text="Editar" styleClass="action-button" onAction="#handleEditar"/>
-                    <Button text="Detalle" styleClass="action-button" onAction="#handleDetalle"/>
-                </HBox>
+            <!-- Formulario para añadir nuevo cliente -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Modificar cliente" styleClass="section-title"/>
+                <ImageView fx:id="iconClient" fitWidth="45" fitHeight="45">
+                    <Image url="@icons/users2.png"/>
+                </ImageView>
+            </HBox>
+            <VBox alignment="CENTER"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #286465; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;">
+                <Label text="Por favor actualice la información del cliente" styleClass="form-label"/>
+                <Region fx:id="espacio_formulario" VBox.vgrow="NEVER" style="-fx-pref-height: 30;"/>
+                <GridPane hgap="20" vgap="10" alignment="CENTER">
+                    <Label text="Nombre" styleClass="label-title2" GridPane.rowIndex="0"/>
+                    <TextField fx:id="nombreField" style="-fx-background-radius: 10;" GridPane.columnIndex="1"
+                               GridPane.rowIndex="0" prefWidth="300"/>
 
+                    <Label text="Dirección" styleClass="label-title2" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="direccionField" style="-fx-background-radius: 10;" GridPane.columnIndex="1"
+                               GridPane.rowIndex="1" prefWidth="300"/>
+
+                    <Label text="Correo" styleClass="label-title2" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="emailField" style="-fx-background-radius: 10;" GridPane.columnIndex="1"
+                               GridPane.rowIndex="2" prefWidth="300"/>
+
+                    <Label text="Teléfono" styleClass="label-title2" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="telefonoField" style="-fx-background-radius: 10;" GridPane.columnIndex="1"
+                               GridPane.rowIndex="3" prefWidth="300"/>
+
+                    <Label text="Documento" styleClass="label-title2" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="documentoField" style="-fx-background-radius: 10;" GridPane.columnIndex="1"
+                               GridPane.rowIndex="4" prefWidth="300"/>
+                </GridPane>
+                <Region fx:id="Espacio_botones" VBox.vgrow="NEVER" style="-fx-pref-height: 30;"/>
+                <HBox alignment="CENTER" spacing="15" style="-fx-padding: 10;">
+                    <Button text="Cancelar" styleClass="action-button" onAction="#handleCancelar"/>
+                    <Button text="Modificar cliente" styleClass="action-button" onAction="#handleModificarCliente"/>
+                </HBox>
             </VBox>
         </VBox>
     </center>

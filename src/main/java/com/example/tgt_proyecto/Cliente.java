@@ -1,19 +1,57 @@
 package com.example.tgt_proyecto;
 
 public class Cliente {
-    private final int cli_id;
-    private final String cli_nombre;
+    private String nombre;
+    private String direccion;
+    private String email;
+    private String telefono;
+    private String documento;
 
-    public Cliente(int cli_id, String cli_nombre) {
-        this.cli_id = cli_id;
-        this.cli_nombre = cli_nombre;
+    public Cliente(String nombre, String direccion, String email, String telefono, String documento) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.email = email;
+        this.telefono = telefono;
+        this.documento = documento;
     }
 
-    public int getCli_id() {
-        return cli_id;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getCli_nombre() {
-        return cli_nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 }
