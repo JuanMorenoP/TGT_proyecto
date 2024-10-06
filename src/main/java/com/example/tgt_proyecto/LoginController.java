@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -75,6 +76,18 @@ public class LoginController {
                 verificarCredenciales(event);  // Acción para abrir el dashboard o mostrar el error
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        });
+        // Detectar cuando se presiona la tecla Enter en el campo de contraseña o usuario
+        passwordField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                loginButton.fire();  // Simular un clic en el botón de inicio de sesión
+            }
+        });
+
+        usernameField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                loginButton.fire();  // Simular un clic en el botón de inicio de sesión
             }
         });
     }
