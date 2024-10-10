@@ -16,7 +16,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) {
         try {
             // Cargar el archivo FXML del login
-            URL fxmlLocation = getClass().getResource("/com/example/tgt_proyecto/login-view.fxml");
+            URL fxmlLocation = getClass().getResource("/com/example/tgt_proyecto/login/login-view.fxml");
             if (fxmlLocation == null) {
                 System.out.println("No se pudo encontrar el archivo login-view.fxml");
                 return;
