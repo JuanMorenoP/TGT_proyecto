@@ -30,7 +30,7 @@
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../icons/inicio.png"/> <!-- Icono para Inicio -->
                     </ImageView>
-                    <Button text="Inicio" styleClass="nav-button-active" fx:id="inicioButton" onAction="#handleInicio"/>
+                    <Button text="Inicio" styleClass="nav-button" fx:id="inicioButton" onAction="#handleInicio"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
@@ -49,7 +49,7 @@
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../icons/clientes.png"/> <!-- Icono para Clientes -->
                     </ImageView>
-                    <Button text="Clientes" styleClass="nav-button" onAction="#handleClientes"/>
+                    <Button text="Clientes" styleClass="nav-button-active" onAction="#handleClientes"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">

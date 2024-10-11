@@ -99,7 +99,9 @@ public class LoginController {
     // Método para verificar las credenciales y obtener el rol
     private void verificarCredenciales(ActionEvent event) throws IOException {
         String username = usernameField.getText();
-        String password = passwordField.getText();
+
+        // Verificar si la contraseña está visible o no
+        String password = isPasswordVisible ? showPasswordField.getText() : passwordField.getText();
 
         // Verificar si los campos están vacíos
         if (username.isEmpty() || password.isEmpty()) {
@@ -150,6 +152,7 @@ public class LoginController {
             errorLabel.setText("Error en la conexión a la base de datos.");
         }
     }
+
 
     // Método para limpiar los campos de texto
     public void limpiarCampos() {

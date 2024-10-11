@@ -62,7 +62,8 @@ public class ModificarUsuarioController {
         // Cargar opciones de roles en el ComboBox
         ObservableList<String> roles = FXCollections.observableArrayList("Administrador", "Empleado");
         rolComboBox.setItems(roles);
-// Ocultar el campo de mostrar contraseña al inicio
+
+        // Ocultar el campo de mostrar contraseña al inicio
         showPasswordField.setVisible(false);
 
         // Rutas para los íconos del ojo
@@ -72,21 +73,23 @@ public class ModificarUsuarioController {
         // Establecer el ícono de ojo cerrado al inicio
         togglePasswordVisibility.setImage(eyeClosedImage);
 
-        // Configurar la funcionalidad para mostrar/ocultar la contraseña
+        // Funcionalidad para mostrar/ocultar la contraseña
         togglePasswordVisibility.setOnMouseClicked(event -> {
             isPasswordVisible = !isPasswordVisible;
             if (isPasswordVisible) {
                 showPasswordField.setText(passwordField.getText());
                 showPasswordField.setVisible(true);
                 passwordField.setVisible(false);
-                togglePasswordVisibility.setImage(eyeOpenImage);  // Cambiar al icono de ojo abierto
+                togglePasswordVisibility.setImage(eyeOpenImage);
             } else {
                 passwordField.setText(showPasswordField.getText());
                 passwordField.setVisible(true);
                 showPasswordField.setVisible(false);
-                togglePasswordVisibility.setImage(eyeClosedImage);  // Cambiar al icono de ojo cerrado
+                togglePasswordVisibility.setImage(eyeClosedImage);
             }
         });
+
+        // Acción para cerrar sesión
         cerrarSesionButton.setOnAction(event -> {
             try {
                 cerrarSesionAction(event);
@@ -95,11 +98,24 @@ public class ModificarUsuarioController {
             }
         });
     }
+    // Cargar datos del usuario seleccionado
+    public void cargarDatosUsuario(Usuario usuario) {
+        this.usuarioSeleccionado = usuario;
+        this.usuarioId = usuario.getId();
+        nombreField.setText(usuario.getNombre());
+        apellidoField.setText(usuario.getApellido());
+        usuarioField.setText(usuario.getUsuario());
+        passwordField.setText(usuario.getContraseña());
 
-    // Método para manejar la acción de guardar un usuario modificado
+        // Seleccionar el rol en el ComboBox
+        if (usuario.getRol().equalsIgnoreCase("Administrador")) {
+            rolComboBox.setValue("Administrador");
+        } else {
+            rolComboBox.setValue("Empleado");
+        }
+    }
     @FXML
     private void handleGuardarUsuario(ActionEvent event) {
-
         // Verificar si hay un usuario seleccionado
         if (usuarioSeleccionado == null) {
             mostrarAlerta("Error", "Modificación fallida", "No se pudo modificar el usuario. No hay usuario seleccionado.");
@@ -110,7 +126,10 @@ public class ModificarUsuarioController {
         String nombre = nombreField.getText();
         String apellido = apellidoField.getText();
         String usuario = usuarioField.getText();
-        String contraseña = passwordField.getText();
+
+        // Aquí verificamos si el campo de texto visible está activo (contraseña visible)
+        String contraseña = isPasswordVisible ? showPasswordField.getText() : passwordField.getText();
+
         String rolSeleccionado = rolComboBox.getValue();  // Obtener el rol seleccionado del ComboBox
 
         // Validar que los campos no estén vacíos
@@ -159,7 +178,7 @@ public class ModificarUsuarioController {
                 preparedStatement.setString(1, nombre);
                 preparedStatement.setString(2, apellido);
                 preparedStatement.setString(3, usuario);
-                preparedStatement.setString(4, contraseña);
+                preparedStatement.setString(4, contraseña);  // Usar la contraseña correcta
                 preparedStatement.setInt(5, rolId);  // Aquí se utiliza el rol ID en lugar del String
                 preparedStatement.setInt(6, usuarioSeleccionado.getId());  // ID del usuario a modificar
 
@@ -187,6 +206,12 @@ public class ModificarUsuarioController {
     }
 
 
+    // Cancelar y regresar a la pantalla de usuarios
+    @FXML
+    private void handleCancelar(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/com/example/tgt_proyecto/usuarios/usuarios.fxml", "Usuarios TGT | EQUIPMENTS");
+    }
+
 
 
     // Verificar si el usuario es administrador
@@ -212,21 +237,6 @@ public class ModificarUsuarioController {
         cambiarEscena(event, fxmlPath, titulo);
     }
 
-    public void cargarDatosUsuario(Usuario usuario) {
-        this.usuarioSeleccionado = usuario;
-        this.usuarioId = usuario.getId(); // Guarda el ID del usuario
-        nombreField.setText(usuario.getNombre());
-        apellidoField.setText(usuario.getApellido());
-        usuarioField.setText(usuario.getUsuario());
-        passwordField.setText(usuario.getContraseña());
-
-        // Seleccionar el rol en el ComboBox
-        if (usuario.getRol().equalsIgnoreCase("Administrador")) {
-            rolComboBox.setValue("Administrador");
-        } else {
-            rolComboBox.setValue("Empleado");
-        }
-    }
 
 
     // Método para manejar la acción de modificar un usuario
@@ -286,11 +296,6 @@ public class ModificarUsuarioController {
     }
 
 
-    // Método para manejar la acción del botón "Cancelar"
-    @FXML
-    private void handleCancelar(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/com/example/tgt_proyecto/usuarios/usuarios.fxml", "Usuarios TGT | EQUIPMENTS");
-    }
 
     // Métodos de navegación a las diferentes secciones
     @FXML
