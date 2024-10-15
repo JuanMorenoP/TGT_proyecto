@@ -3,7 +3,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.usuarios.DetallesUsuarioController"
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.proveedores.DetallesProveedorController"
             styleClass="main-background">
 
     <!-- Barra lateral de navegación -->
@@ -22,7 +22,9 @@
 
             <!-- Menú de navegación -->
             <VBox spacing="15" alignment="TOP_LEFT" styleClass="menu">
-                <Region fx:id="topSpacer" VBox.vgrow="NEVER" style="-fx-pref-height: 5;"/> <!-- Ajusta la altura del espacio aquí -->
+                <!-- Región que actúa como un espacio flexible -->
+                <Region fx:id="topSpacer" VBox.vgrow="NEVER"
+                        style="-fx-pref-height: 5;"/> <!-- Ajusta la altura del espacio aquí -->
 
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
@@ -40,7 +42,7 @@
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../icons/usuarios.png"/> <!-- Icono para Usuarios -->
                     </ImageView>
-                    <Button text="Usuarios" styleClass="nav-button-active" onAction="#handleUsuarios"/>
+                    <Button text="Usuarios" styleClass="nav-button" onAction="#handleUsuarios"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
@@ -52,7 +54,7 @@
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../icons/proveedores.png"/> <!-- Icono para Proveedores -->
                     </ImageView>
-                    <Button text="Proveedores" styleClass="nav-button" onAction="#handleProveedores"/>
+                    <Button text="Proveedores" styleClass="nav-button-active" onAction="#handleProveedores"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
@@ -89,6 +91,7 @@
             <!-- Segunda línea decorativa -->
             <HBox style="-fx-background-color: white; -fx-pref-height: 2px;"/>
 
+            <!-- Espacio flexible para empujar el botón de cerrar sesión hacia abajo -->
             <Region VBox.vgrow="ALWAYS"/>
 
             <!-- Botón de Cerrar sesión con icono -->
@@ -106,21 +109,19 @@
         <VBox spacing="20" alignment="TOP_CENTER" styleClass="dashboard-content">
             <HBox alignment="CENTER" spacing="20">
                 <ImageView fx:id="backgroundImage" fitWidth="1550" fitHeight="135">
-                    <Image url="@../Images/fondousuariosperfil.png"/>
+                    <Image url="@../Images/fondoproveedoresperfil.png"/>
                 </ImageView>
             </HBox>
             <VBox spacing="20" alignment="TOP_CENTER" styleClass="dashboard-content">
-                <!-- Título de la sección -->
                 <HBox spacing="10" alignment="CENTER_LEFT">
-                    <Label text="Detalles de usuario" styleClass="section-title"/>
-                    <ImageView fx:id="iconUser" fitWidth="45" fitHeight="45">
+                    <Label text="Detalles de Proveedor" styleClass="section-title"/>
+                    <ImageView fx:id="iconProvider" fitWidth="45" fitHeight="45">
                         <Image url="@../icons/users2.png"/>
                     </ImageView>
                 </HBox>
 
-                <!-- Cuadro principal con ancho ajustado -->
                 <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
-                    <!-- Cuadro de la izquierda - Blanco con borde oscuro -->
+                    <!-- Cuadro izquierdo -->
                     <VBox alignment="CENTER" spacing="15"
                           style="-fx-background-color: white;
              -fx-border-color: #286465;
@@ -137,53 +138,52 @@
                         </HBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
                             <ImageView fitWidth="30" fitHeight="30">
-                                <Image url="@../icons/nombre.png"/>
+                                <Image url="@../icons/contacto.png"/>
                             </ImageView>
-                            <Label text="Apellido:" styleClass="label-title2"/>
+                            <Label text="Contacto:" styleClass="label-title2"/>
                         </HBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
                             <ImageView fitWidth="30" fitHeight="30">
-                                <Image url="@../icons/user.png"/>
+                                <Image url="@../icons/ubicacion.png"/>
                             </ImageView>
-                            <Label text="Usuario:" styleClass="label-title2"/>
+                            <Label text="Dirección:" styleClass="label-title2"/>
                         </HBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
                             <ImageView fitWidth="30" fitHeight="30">
-                                <Image url="@../icons/contraseña.png"/>
+                                <Image url="@../icons/metodo_pago.png"/>
                             </ImageView>
-                            <Label text="Contraseña:" styleClass="label-title2"/>
+                            <Label text="Método de Pago:" styleClass="label-title2"/>
                         </HBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
                             <ImageView fitWidth="30" fitHeight="30">
-                                <Image url="@../icons/rol.png"/>
+                                <Image url="@../icons/documento.png"/>
                             </ImageView>
-                            <Label text="Rol:" styleClass="label-title2"/>
+                            <Label text="NIT/RUT:" styleClass="label-title2"/>
                         </HBox>
                     </VBox>
 
-                    <!-- Cuadro de la derecha - Fondo verde oscuro y texto blanco -->
+                    <!-- Cuadro derecho -->
                     <VBox alignment="CENTER_LEFT" spacing="15"
                           style="-fx-background-color: #286465;
                              -fx-padding: 20;
                              -fx-border-radius: 10;
                              -fx-background-radius: 10;
                              -fx-pref-width: 400; -fx-pref-height: 300;">
-                        <!-- Conexión con el controlador usando fx:id -->
-                        <Label fx:id="nombreField" text="Usuario Nombre" styleClass="label-content"
-                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER;-fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
-                        <Label fx:id="apellidoField" text="Usuario Apellido" styleClass="label-content"
-                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER;-fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
-                        <Label fx:id="usuarioField" text="usuario123" styleClass="label-content"
-                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER;-fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
-                        <Label fx:id="contraseñaField" text="******" styleClass="label-content"
-                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER;-fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
-                        <Label fx:id="rolField" text="Administrador" styleClass="label-content"
-                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER;-fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
+                        <Label fx:id="nombreLabel" text="Proveedor XYZ" styleClass="label-content"
+                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER; -fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
+                        <Label fx:id="contactoLabel" text="321654987" styleClass="label-content"
+                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER; -fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
+                        <Label fx:id="direccionLabel" text="Carrera 10 # 20-30" styleClass="label-content"
+                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER; -fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
+                        <Label fx:id="metodoPagoLabel" text="Transferencia Bancaria" styleClass="label-content"
+                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER; -fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
+                        <Label fx:id="nitRutLabel" text="9001234567" styleClass="label-content"
+                               style="-fx-text-fill: #005555; -fx-background-color: #C7DFE0; -fx-alignment: CENTER; -fx-background-radius: 10; -fx-padding: 10; -fx-pref-width: 360;"/>
                     </VBox>
                 </HBox>
 
-                <!-- Botón de volver -->
-                <Button text="Volver al inicio" styleClass="action-button" onAction="#handleCancelar"/>
+                <!-- Botón de volver al inicio -->
+                <Button text="Volver a Proveedores" styleClass="action-button" onAction="#handleCancelar"/>
             </VBox>
         </VBox>
     </center>

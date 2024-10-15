@@ -27,9 +27,8 @@ module com.example.tgt_proyecto {
     exports com.example.tgt_proyecto.database;
     opens com.example.tgt_proyecto.database to javafx.fxml;
 
-
-    // Abrir el paquete de proveedores para FXML (no exportar si no es necesario)
-    opens com.example.tgt_proyecto.proveedores to javafx.fxml;
+    // Abrir el paquete de proveedores para FXML y base
+    opens com.example.tgt_proyecto.proveedores to javafx.fxml, javafx.base;
 
     // Abrir el paquete de la sesión para FXML (no exportar si no es necesario)
     opens com.example.tgt_proyecto.session to javafx.fxml;
@@ -43,5 +42,4 @@ module com.example.tgt_proyecto {
     opens com.example.tgt_proyecto.inventario to javafx.fxml;
     opens com.example.tgt_proyecto.compras to javafx.fxml;
     opens com.example.tgt_proyecto.ventas to javafx.fxml;
-
 }
