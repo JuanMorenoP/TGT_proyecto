@@ -33,11 +33,15 @@ module com.example.tgt_proyecto {
     // Abrir el paquete de la sesión para FXML (no exportar si no es necesario)
     opens com.example.tgt_proyecto.session to javafx.fxml;
 
-    // Añadir apertura y exportación para usuarios
+    // Exportar y abrir el paquete de usuarios
     exports com.example.tgt_proyecto.usuarios;
     opens com.example.tgt_proyecto.usuarios to javafx.fxml;
 
-    // Añadir apertura para cualquier otro paquete que necesite ser abierto
+    // Abrir y exportar el paquete de maquinaria para FXML
+    exports com.example.tgt_proyecto.maquinaria;
+    opens com.example.tgt_proyecto.maquinaria to javafx.fxml;
+
+    // Abrir los paquetes restantes para FXML
     opens com.example.tgt_proyecto.mantenimiento to javafx.fxml;
     opens com.example.tgt_proyecto.inventario to javafx.fxml;
     opens com.example.tgt_proyecto.compras to javafx.fxml;
