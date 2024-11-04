@@ -1,4 +1,4 @@
-package com.example.tgt_proyecto.maquinaria;
+package com.example.tgt_proyecto.maquinaria.Portatil;
 
 import com.example.tgt_proyecto.login.LoginController;
 import com.example.tgt_proyecto.session.SessionManager;
@@ -47,7 +47,7 @@ public class DetallesVaporOzonoController {
     // Método para volver a la vista inicial de Profesional
     @FXML
     private void volverAProfesional(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/profesional.fxml", "Profesional TGT | EQUIPMENTS");
+        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/Profesional/Profesional.fxml", "Profesional TGT | EQUIPMENTS");
     }
 
     // Métodos de navegación

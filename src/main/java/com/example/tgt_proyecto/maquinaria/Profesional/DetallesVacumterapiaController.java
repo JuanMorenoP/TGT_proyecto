@@ -1,69 +1,56 @@
-package com.example.tgt_proyecto.maquinaria;
+package com.example.tgt_proyecto.maquinaria.Profesional;
 
-import com.example.tgt_proyecto.database.DatabaseConnection;
 import com.example.tgt_proyecto.login.LoginController;
 import com.example.tgt_proyecto.session.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Optional;
 
-public class ProfesionalController {
+public class DetallesVacumterapiaController {
 
     @FXML
+    private Button cerrarSesionButton;
+
+    @FXML
+    public void initialize() {
+        cerrarSesionButton.setOnAction(event -> {
+            try {
+                cerrarSesionAction(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    // Método para cerrar sesión
     private void cerrarSesionAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tgt_proyecto/login/login-view.fxml"));
         Scene loginScene = new Scene(fxmlLoader.load());
+        loginScene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
+
+        LoginController loginController = fxmlLoader.getController();
+        loginController.limpiarCampos();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(loginScene);
         stage.setTitle("TGT | EQUIPMENTS - Login");
         stage.show();
     }
 
+    // Método para volver a la vista inicial de Profesional
     @FXML
-    private void mostrarDetallesCarboxiterapia(ActionEvent event) throws IOException {
-        mostrarDetallesEquipo(event, "/com/example/tgt_proyecto/maquinaria/mostrarDetallesCarboxiterapia.fxml");
+    private void volverAProfesional(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/Profesional/Profesional.fxml", "Profesional TGT | EQUIPMENTS");
     }
 
-    @FXML
-    private void mostrarDetallesDiatermia(ActionEvent event) throws IOException {
-        mostrarDetallesEquipo(event, "/com/example/tgt_proyecto/maquinaria/mostrarDetallesDiatermia.fxml");
-    }
-
-    @FXML
-    private void mostrarDetallesVaporOzono(ActionEvent event) throws IOException {
-        mostrarDetallesEquipo(event, "/com/example/tgt_proyecto/maquinaria/mostrarDetallesVaporOzono.fxml");
-    }
-
-    private void mostrarDetallesEquipo(ActionEvent event, String fxmlPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        // Asegurarse de que los estilos se carguen
-        scene.getStylesheets().add(getClass().getResource("/com/example/tgt_proyecto/style.css").toExternalForm());
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Detalles del Equipo TGT | EQUIPMENTS");
-        stage.show();
-    }
-
-    // Método para volver al inicio de maquinaria
-    @FXML
-    private void volverAMaquinaria(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/maquinaria.fxml", "Maquinaria TGT | EQUIPMENTS");
-    }
+    // Métodos de navegación
     @FXML
     private void handleInicio(ActionEvent event) throws IOException {
         cambiarEscena(event, "/com/example/tgt_proyecto/dashboard/dashboard-view.fxml", "Dashboard TGT | EQUIPMENTS");
@@ -114,10 +101,12 @@ public class ProfesionalController {
         cambiarEscena(event, "/com/example/tgt_proyecto/configuracion/configuracion.fxml", "Configuración TGT | EQUIPMENTS");
     }
 
+    // Verificar si el usuario es administrador
     private boolean esAdministrador() {
         return SessionManager.esAdministrador();
     }
 
+    // Mostrar alerta de permiso denegado
     private void mostrarAlertaPermisoDenegado() {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle("Permiso denegado");
@@ -134,6 +123,7 @@ public class ProfesionalController {
         cambiarEscena(event, fxmlPath, titulo);
     }
 
+    // Método auxiliar para cambiar escenas
     private void cambiarEscena(ActionEvent event, String fxmlPath, String titulo) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene newScene = new Scene(fxmlLoader.load());
@@ -143,5 +133,14 @@ public class ProfesionalController {
         stage.setScene(newScene);
         stage.setTitle(titulo);
         stage.show();
+    }
+
+    // Método para mostrar alertas
+    private void mostrarAlerta(Alert.AlertType tipoAlerta, String titulo, String encabezado, String contenido) {
+        Alert alerta = new Alert(tipoAlerta);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(encabezado);
+        alerta.setContentText(contenido);
+        alerta.showAndWait();
     }
 }

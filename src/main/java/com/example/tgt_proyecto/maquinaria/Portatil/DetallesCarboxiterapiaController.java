@@ -1,20 +1,19 @@
-package com.example.tgt_proyecto.maquinaria;
+package com.example.tgt_proyecto.maquinaria.Portatil;
 
-import com.example.tgt_proyecto.database.DatabaseConnection;
 import com.example.tgt_proyecto.login.LoginController;
 import com.example.tgt_proyecto.session.SessionManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
 
 import java.io.IOException;
 
-public class MaquinariaController {
+public class DetallesCarboxiterapiaController {
 
     @FXML
     private Button cerrarSesionButton;
@@ -43,6 +42,12 @@ public class MaquinariaController {
         stage.setScene(loginScene);
         stage.setTitle("TGT | EQUIPMENTS - Login");
         stage.show();
+    }
+
+    // Método para volver a la vista inicial de Profesional
+    @FXML
+    private void volverAProfesional(ActionEvent event) throws IOException {
+        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/Profesional/Profesional.fxml", "Profesional TGT | EQUIPMENTS");
     }
 
     // Métodos de navegación
@@ -96,21 +101,6 @@ public class MaquinariaController {
         cambiarEscena(event, "/com/example/tgt_proyecto/configuracion/configuracion.fxml", "Configuración TGT | EQUIPMENTS");
     }
 
-    // Métodos para mostrar las vistas de Profesional, Portátil e Importados
-    @FXML
-    private void mostrarProfesional(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/Profesional/Profesional.fxml", "Profesional TGT | EQUIPMENTS");
-    }
-
-    @FXML
-    private void mostrarPortatil(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/Portatil/portatil.fxml", "Portátil TGT | EQUIPMENTS");
-    }
-
-    @FXML
-    private void mostrarImportados(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/com/example/tgt_proyecto/maquinaria/importados.fxml", "Importados TGT | EQUIPMENTS");
-    }
     // Verificar si el usuario es administrador
     private boolean esAdministrador() {
         return SessionManager.esAdministrador();

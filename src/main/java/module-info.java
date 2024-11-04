@@ -46,4 +46,8 @@ module com.example.tgt_proyecto {
     opens com.example.tgt_proyecto.inventario to javafx.fxml;
     opens com.example.tgt_proyecto.compras to javafx.fxml;
     opens com.example.tgt_proyecto.ventas to javafx.fxml;
+    exports com.example.tgt_proyecto.maquinaria.Profesional;
+    opens com.example.tgt_proyecto.maquinaria.Profesional to javafx.fxml;
+    exports com.example.tgt_proyecto.maquinaria.Portatil;
+    opens com.example.tgt_proyecto.maquinaria.Portatil to javafx.fxml;
 }

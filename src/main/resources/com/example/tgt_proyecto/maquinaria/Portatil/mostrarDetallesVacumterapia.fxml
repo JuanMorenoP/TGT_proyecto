@@ -3,7 +3,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.maquinaria.MaquinariaController"
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tgt_proyecto.maquinaria.Portatil.DetallesVaporOzonoController"
             styleClass="main-background">
 
     <!-- Barra lateral de navegación -->
@@ -12,7 +12,7 @@
             <!-- Logo y título -->
             <HBox alignment="CENTER_LEFT" spacing="10" styleClass="sidebar-logo">
                 <ImageView fx:id="logo" fitWidth="50" fitHeight="50" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../Images/logo.jpg"/> <!-- Ruta corregida al logo -->
+                    <Image url="@../../Images/logo.jpg"/> <!-- Ruta corregida al logo -->
                 </ImageView>
                 <Label text="TGT | EQUIPMENTS" styleClass="sidebar-title"/>
             </HBox>
@@ -22,68 +22,64 @@
 
             <!-- Menú de navegación -->
             <VBox spacing="15" alignment="TOP_LEFT" styleClass="menu">
-                <!-- Región que actúa como un espacio flexible -->
-                <Region fx:id="topSpacer" VBox.vgrow="NEVER"
-                        style="-fx-pref-height: 5;"/> <!-- Ajusta la altura del espacio aquí -->
-
+                <Region fx:id="topSpacer" VBox.vgrow="NEVER" style="-fx-pref-height: 5;"/> <!-- Ajusta la altura del espacio aquí -->
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/inicio.png"/> <!-- Icono para Inicio -->
+                        <Image url="@../../icons/inicio.png"/> <!-- Icono para Inicio -->
                     </ImageView>
                     <Button text="Inicio" styleClass="nav-button" fx:id="inicioButton" onAction="#handleInicio"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/maquinaria.png"/> <!-- Icono para Maquinaria -->
+                        <Image url="@../../icons/maquinaria.png"/> <!-- Icono para Maquinaria -->
                     </ImageView>
                     <Button text="Maquinaria" styleClass="nav-button-active" onAction="#handleMaquinaria"/>
                 </HBox>
-                <!-- Nuevo botón para Usuarios, con acceso restringido a los empleados -->
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/usuarios.png"/> <!-- Icono para Usuarios -->
+                        <Image url="@../../icons/usuarios.png"/> <!-- Icono para Usuarios -->
                     </ImageView>
                     <Button text="Usuarios" styleClass="nav-button" onAction="#handleUsuarios"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/clientes.png"/> <!-- Icono para Clientes -->
+                        <Image url="@../../icons/clientes.png"/> <!-- Icono para Clientes -->
                     </ImageView>
                     <Button text="Clientes" styleClass="nav-button" onAction="#handleClientes"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/proveedores.png"/> <!-- Icono para Proveedores -->
+                        <Image url="@../../icons/proveedores.png"/> <!-- Icono para Proveedores -->
                     </ImageView>
                     <Button text="Proveedores" styleClass="nav-button" onAction="#handleProveedores"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/mantenimiento.png"/> <!-- Icono para Mantenimiento -->
+                        <Image url="@../../icons/mantenimiento.png"/> <!-- Icono para Mantenimiento -->
                     </ImageView>
                     <Button text="Mantenimiento" styleClass="nav-button" onAction="#handleMantenimiento"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/inventario.png"/> <!-- Icono para Inventario -->
+                        <Image url="@../../icons/inventario.png"/> <!-- Icono para Inventario -->
                     </ImageView>
                     <Button text="Inventario" styleClass="nav-button" onAction="#handleInventario"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/compras.png"/> <!-- Icono para Compras -->
+                        <Image url="@../../icons/compras.png"/> <!-- Icono para Compras -->
                     </ImageView>
                     <Button text="Compras" styleClass="nav-button" onAction="#handleCompras"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/ventas.png"/> <!-- Icono para Ventas -->
+                        <Image url="@../../icons/ventas.png"/> <!-- Icono para Ventas -->
                     </ImageView>
                     <Button text="Ventas" styleClass="nav-button" onAction="#handleVentas"/>
                 </HBox>
                 <HBox spacing="10">
                     <ImageView fitWidth="24" fitHeight="24">
-                        <Image url="@../icons/configuracion.png"/> <!-- Icono para Configuración -->
+                        <Image url="@../../icons/configuracion.png"/> <!-- Icono para Configuración -->
                     </ImageView>
                     <Button text="Configuración" styleClass="nav-button" onAction="#handleConfiguracion"/>
                 </HBox>
@@ -98,7 +94,7 @@
             <!-- Botón de Cerrar sesión con icono -->
             <HBox spacing="10">
                 <ImageView fitWidth="24" fitHeight="24">
-                    <Image url="@../icons/cerrar_sesion.png"/> <!-- Icono para Cerrar sesión -->
+                    <Image url="@../../icons/cerrar_sesion.png"/> <!-- Icono para Cerrar sesión -->
                 </ImageView>
                 <Button fx:id="cerrarSesionButton" text="Cerrar sesión" styleClass="nav-button"/>
             </HBox>
@@ -110,48 +106,46 @@
         <VBox spacing="20" alignment="TOP_CENTER" styleClass="dashboard-content">
             <HBox alignment="CENTER" spacing="20">
                 <ImageView fx:id="backgroundImage" fitWidth="1550" fitHeight="135">
-                    <Image url="@../Images/fondomaquinaria.png"/>
+                    <Image url="@../../Images/fondomaquinaria.png"/>
                 </ImageView>
             </HBox>
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Tipo Maquinaria" styleClass="section-title"/>
-                <ImageView fitWidth="50" fitHeight="50">
-                    <Image url="@../icons/maquinariaicon.png"/>
-                </ImageView>
-            </HBox>
-            <Region fx:id="Espacio_tabla" VBox.vgrow="NEVER" style="-fx-pref-height: 30;"/>
-            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
-            <!-- Secciones para Profesional, Portátil e Importados -->
-            <HBox spacing="40" alignment="CENTER">
-                <VBox alignment="CENTER" spacing="10">
-                    <Region fx:id="Espacio_boton3" VBox.vgrow="NEVER" style="-fx-pref-height: 80;"/>
-                    <ImageView fitWidth="250" fitHeight="250">
-                        <Image url="@../Images/profesional.png"/>
+
+            <VBox spacing="20" alignment="TOP_CENTER" styleClass="dashboard-content">
+                <!-- Título de la sección -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Detalles de Carboxiterapia" styleClass="section-title"/>
+                    <ImageView fitWidth="35" fitHeight="35">
+                        <Image url="@../../icons/users2.png"/>
                     </ImageView>
-                    <Region fx:id="Espacio_boton6" VBox.vgrow="NEVER" style="-fx-pref-height: 15;"/>
-                    <Button text="Profesional" styleClass="info-button" minWidth="150" onAction="#mostrarProfesional"/>
-                    <Region fx:id="Espacio_boton2" VBox.vgrow="NEVER" style="-fx-pref-height: 80;"/>
-                </VBox>
-                <VBox alignment="CENTER" spacing="10">
-                    <Region fx:id="Espacio_boton4" VBox.vgrow="NEVER" style="-fx-pref-height: 80;"/>
-                    <ImageView fitWidth="250" fitHeight="250">
-                        <Image url="@../Images/profesional.png"/>
+                </HBox>
+
+                <!-- Cuadro principal con ancho ajustado -->
+                <HBox alignment="CENTER" spacing="40" style="-fx-padding: 20;">
+                    <!-- Cuadro de la izquierda - Blanco con borde oscuro -->
+                    <VBox alignment="CENTER" spacing="15"
+                          style="-fx-background-color: white;
+                             -fx-border-color: #286465;
+                             -fx-border-width: 2;
+                             -fx-border-radius: 10;
+                             -fx-background-radius: 10;
+                             -fx-padding: 30;
+                             -fx-pref-width: 500; -fx-pref-height: 400;">
+                        <Label text="Carboxiterapia" styleClass="label-title"/>
+                        <Label text="Información detallada sobre Carboxiterapia..." styleClass="label-content"
+                               style="-fx-text-fill: #94A4A4;"/>
+                    </VBox>
+
+                    <!-- Cuadro de la derecha - Fondo verde oscuro y texto blanco -->
+
+                    <ImageView fitWidth="500" fitHeight="400" preserveRatio="true">
+                        <Image url="@../../Images/carboxiterapia.png"/>
                     </ImageView>
-                    <Region fx:id="Espacio_boton7" VBox.vgrow="NEVER" style="-fx-pref-height: 15;"/>
-                    <Button text="Portátil" styleClass="info-button" minWidth="150" onAction="#mostrarPortatil"/>
-                    <Region fx:id="Espacio_boton1" VBox.vgrow="NEVER" style="-fx-pref-height: 80;"/>
-                </VBox>
-                <VBox alignment="CENTER" spacing="10">
-                    <Region fx:id="Espacio_boton5" VBox.vgrow="NEVER" style="-fx-pref-height: 80;"/>
-                    <ImageView fitWidth="250" fitHeight="250">
-                        <Image url="@../Images/profesional.png"/>
-                    </ImageView>
-                    <Region fx:id="Espacio_boton8" VBox.vgrow="NEVER" style="-fx-pref-height: 15;"/>
-                    <Button text="Importados" styleClass="info-button" minWidth="150" onAction="#mostrarImportados"/>
-                    <Region fx:id="Espacio_boton" VBox.vgrow="NEVER" style="-fx-pref-height: 80;"/>
-                </VBox>
-            </HBox>
-            </ScrollPane>
+
+                </HBox>
+
+                <!-- Botón para regresar al inicio de Profesional -->
+                <Button text="Volver al inicio de Profesional" styleClass="action-button" onAction="#volverAProfesional"/>
+            </VBox>
         </VBox>
     </center>
 </BorderPane>
